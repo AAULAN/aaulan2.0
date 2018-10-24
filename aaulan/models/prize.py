@@ -8,7 +8,10 @@ class Prize(models.Model):
 
     name = models.CharField(max_length=100)
     amount = models.IntegerField()
-    tournament = models.ForeignKey('Tournament')
+    tournament = models.ForeignKey(
+        'Tournament',
+        on_delete=models.CASCADE
+    )
 
 
 class PrizeAdmin(admin.ModelAdmin):

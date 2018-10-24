@@ -7,7 +7,7 @@ class Sponsor(models.Model):
         verbose_name = 'Event sponsor'
 
     name = models.CharField(max_length=100)
-    logo = models.ImageField()
+    #logo = models.ImageField()
     tagline = models.CharField(max_length=200)
     link = models.URLField(blank=True)
 

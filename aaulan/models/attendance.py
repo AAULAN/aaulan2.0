@@ -19,4 +19,4 @@ class AttendanceAdmin(admin.ModelAdmin):
     ordering = ['user__first_name', 'user__last_name']
 
 
-admin.site.regsiter(Attendance, AttendanceAdmin)
+admin.site.register(Attendance, AttendanceAdmin)
