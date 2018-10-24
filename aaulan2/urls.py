@@ -17,10 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from aaulan import views
+from aaulan.views.team import TeamViewSet
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login', auth_views.LoginView.as_view()),
     path('logout', auth_views.LogoutView.as_view()),
-    path('account/verify', views.verify_ticket)
+    path('api/1/team', TeamViewSet.as_view({'get': 'list'})),
 ]

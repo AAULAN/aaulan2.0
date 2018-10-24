@@ -1,1 +1,1 @@
-from .tickets import *
+from .team import *
