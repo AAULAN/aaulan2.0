@@ -8,12 +8,21 @@ class Sponsorship(models.Model):
 
     tier = models.IntegerField()
     amount = models.IntegerField()
-    sponsor = models.ForeignKey('Sponsor')
-    event = models.ForeignKey('Event')
+    sponsor = models.ForeignKey(
+        to='Sponsor',
+        on_delete=models.CASCADE
+    )
+    event = models.ForeignKey(
+        to='Event',
+        on_delete=models.CASCADE
+    )
+
+    def get_sponsor_name(self):
+        return self.sponsor.name
 
 
 class SponsorshipAdmin(admin.ModelAdmin):
-    list_display = ('sponsor__name', 'event', 'tier', 'amount')
+    list_display = ('get_sponsor_name', 'event', 'tier', 'amount')
     ordering = ['event', 'tier']
 
 

@@ -9,7 +9,7 @@ class Game(models.Model):
     name = models.CharField(max_length=100)
 
 
-class GameAdmin(models.Model):
+class GameAdmin(admin.ModelAdmin):
     list = ('name',)
 
 

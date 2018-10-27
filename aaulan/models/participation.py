@@ -7,8 +7,14 @@ class Participation(models.Model):
         verbose_name = 'Tournament participation'
 
     position = models.IntegerField(blank=True)
-    team = models.ForeignKey(to='Team')
-    tournament = models.ForeignKey(to='Tournament')
+    team = models.ForeignKey(
+        to='Team',
+        on_delete=models.CASCADE
+    )
+    tournament = models.ForeignKey(
+        to='Tournament',
+        on_delete=models.CASCADE
+    )
 
 
 class ParticipationAdmin(admin.ModelAdmin):

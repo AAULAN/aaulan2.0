@@ -8,6 +8,10 @@ class Team(models.Model):
         verbose_name = 'Team'
 
     name = models.CharField(max_length=255)
+    event = models.ForeignKey(
+        to='Event',
+        on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return self.name
