@@ -20,11 +20,11 @@ class Team(models.Model):
 class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
-        fields = ('name',)
+        fields = ('name', 'event', 'pk')
 
 
 class TeamAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('name', 'event', 'pk')
 
 
 admin.site.register(Team, TeamAdmin)

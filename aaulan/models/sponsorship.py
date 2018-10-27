@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib import admin
+from rest_framework import serializers
 
 
 class Sponsorship(models.Model):
@@ -19,6 +20,12 @@ class Sponsorship(models.Model):
 
     def get_sponsor_name(self):
         return self.sponsor.name
+
+
+class SponsorshipSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sponsorship
+        fields = ('tier', 'amount', 'sponsor')
 
 
 class SponsorshipAdmin(admin.ModelAdmin):

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib import admin
+from rest_framework import serializers
 
 
 class TeamAssociation(models.Model):
@@ -17,13 +18,24 @@ class TeamAssociation(models.Model):
         on_delete=models.CASCADE,
     )
 
+    def get_event(self):
+        return self.team.event
+    get_event.short_description = 'Event'
+
     def __str__(self):
-        return "{} {}".format(self.user.first_name, self.user.last_name)
+        return self.user.get_user_name()
+
+
+class TeamAssociationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TeamAssociation
+        fields = ('is_leader', 'user')
+        depth = 1
 
 
 class TeamAssociationAdmin(admin.ModelAdmin):
-    list = ('user', 'team', 'is_leader')
-    list_filter = ('is_leader',)
+    list_display = ('user', 'team', 'is_leader', 'get_event')
+    list_filter = ('is_leader', 'team', 'team__event')
 
 
 admin.site.register(TeamAssociation, TeamAssociationAdmin)

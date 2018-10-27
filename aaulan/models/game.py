@@ -8,9 +8,12 @@ class Game(models.Model):
 
     name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 
 class GameAdmin(admin.ModelAdmin):
-    list = ('name',)
+    list_display = ('name',)
 
 
 admin.site.register(Game, GameAdmin)

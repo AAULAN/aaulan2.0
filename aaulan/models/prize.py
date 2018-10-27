@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib import admin
+from rest_framework import serializers
 
 
 class Prize(models.Model):
@@ -14,9 +15,16 @@ class Prize(models.Model):
     )
 
 
+class PrizeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Prize
+        fields = ('name', 'amount')
+
+
 class PrizeAdmin(admin.ModelAdmin):
     list_display = ('name', 'tournament', 'amount')
     ordering = ['tournament', 'name']
+    list_filter = ('tournament__event', 'tournament')
 
 
 admin.site.register(Prize, PrizeAdmin)
