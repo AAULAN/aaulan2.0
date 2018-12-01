@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 from aaulan import views
 from aaulan.views.team import TeamViewSet
 from aaulan.views.event import EventViewSet
@@ -39,3 +41,5 @@ urlpatterns = [
     path('api/1/sponsor', SponsorViewSet.as_view({'get': 'list'})),
     path('api/1/sponsor<int:pk>', SponsorViewSet.as_view({'get': 'retrieve'})),
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

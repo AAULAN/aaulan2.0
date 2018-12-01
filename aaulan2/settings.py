@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'aaulan.apps.AaulanConfig',
     'rest_framework',
-    'django_filters'
+    'django_filters',
+    'sass_processor'
 ]
 
 MIDDLEWARE = [
@@ -56,13 +57,18 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
 }
 
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder'
+]
+
 ROOT_URLCONF = 'aaulan2.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,6 +83,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'aaulan2.wsgi.application'
 
+STATIC_ROOT = 'static'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -131,3 +138,11 @@ LOGIN_URL = '/login'
 
 # Studentersamfundets ticket API
 TICKET_API_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+# Sass processor
+SASS_PROCESSOR_ROOT = os.path.join(STATIC_ROOT, 'css')
+
+SASS_PROCESSOR_INCLUDE_DIRS = [
+    'bootstrap/scss',
+    'aaulan/css'
+]
