@@ -29,6 +29,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login', auth_views.LoginView.as_view()),
     path('logout', auth_views.LogoutView.as_view()),
+    path('register', views.register),
     path('api/1/event', EventViewSet.as_view({'get': 'list'})),
     path('api/1/event/<int:pk>', EventViewSet.as_view({'get': 'retrieve'})),
     path('api/1/event/<int:event_pk>/team', TeamViewSet.as_view({'get': 'list'})),
