@@ -1,7 +1,0 @@
-django
-requests
-djangorestframework
-django-filter
-libsass
-django-compressor
-django-sass-processor
