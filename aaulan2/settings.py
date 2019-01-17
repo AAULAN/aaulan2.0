@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'aaulan.apps.AaulanConfig',
     'rest_framework',
     'django_filters',
-    'sass_processor'
+    'sass_processor',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -86,6 +87,12 @@ WSGI_APPLICATION = 'aaulan2.wsgi.application'
 
 STATIC_ROOT = 'static'
 
+# Crispy forms
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Flash messages
+
 MESSAGE_TAGS = {
     message_constants.DEBUG: 'dark',
     message_constants.INFO: 'info',
@@ -103,7 +110,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -155,3 +161,10 @@ SASS_PROCESSOR_INCLUDE_DIRS = [
     'bootstrap/scss',
     'aaulan/css'
 ]
+
+# User/Attendee registration
+REGISTRATION_OPEN = True
+
+ACCOUNT_ACTIVATION_DAYS = 7
+
+REGISTRATION_SALT = 'z@g*v(6!xpma&%=b&lnmzuxw$nq&0s&qx_^xe^vb_hh5@tzixd'

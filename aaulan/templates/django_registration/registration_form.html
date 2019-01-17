@@ -1,8 +1,18 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load sass_tags %}
+{% load crispy_forms_tags %}
 
 {% block content %}
+    {% if form.non_field_errors %}
+        <div class="alert alert-info">
+            <ul>
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
     <form class="form-register form-user-registration" method="post" action="/register">
         {% csrf_token %}
         <div class="form-row">
@@ -11,6 +21,15 @@
                     <label for="first-name">{% trans "First name" %}</label>
                     <input type="text" class="form-control" id="first-name" placeholder="Arne">
                 </div>
+                {% if form.first_name.errors %}
+                    <div class="alert alert-info">
+                        <ul>
+                            {% for error in form.first_name.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
             </div>
             <div class="col-6">
                 <div class="form-group">
@@ -25,6 +44,15 @@
                     <label for="email">{% trans "Email" %}</label>
                     <input type="text" class="form-control" id="email" placeholder="arne@example.com">
                 </div>
+                {% if form.last_name.errors %}
+                    <div class="alert alert-info">
+                        <ul>
+                            {% for error in form.last_name.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
             </div>
         </div>
         <div class="form-row">
@@ -33,22 +61,49 @@
                     <label for="username">{% trans "Username" %}</label>
                     <input type="text" class="form-control" id="username" placeholder="arne_lang_arm">
                 </div>
+                {% if form.username.errors %}
+                    <div class="alert alert-info">
+                        <ul>
+                            {% for error in form.username.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
             </div>
         </div>
         <div class="form-row">
             <div class="col-12">
                 <div class="form-group">
-                    <label for="password">{% trans "Password" %}</label>
-                    <input type="password" class="form-control" id="password">
+                    <label for="password1">{% trans "Password" %}</label>
+                    <input type="password" class="form-control" id="password1">
                 </div>
+                {% if form.username.errors %}
+                    <div class="alert alert-info">
+                        <ul>
+                            {% for error in form.username.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
             </div>
         </div>
         <div class="form-row">
             <div class="col-12">
                 <div class="form-group">
-                    <label for="password-check">{% trans "Password again" %}</label>
-                    <input type="password" class="form-control" id="password-check">
+                    <label for="password2">{% trans "Password again" %}</label>
+                    <input type="password" class="form-control" id="password2">
                 </div>
+                {% if form.username.errors %}
+                    <div class="alert alert-info">
+                        <ul>
+                            {% for error in form.username.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
             </div>
         </div>
         <div class="form-row">

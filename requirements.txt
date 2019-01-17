@@ -5,3 +5,5 @@ django-filter
 libsass
 django-compressor
 django-sass-processor
+django-registration
+django-crispy-forms
